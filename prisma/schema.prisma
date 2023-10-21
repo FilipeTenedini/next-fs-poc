@@ -17,8 +17,6 @@ model Category {
   imageUrl String @map("image_url")
 
   Product Product[]
-
-  @@map("category")
 }
 
 model Product {
@@ -26,10 +24,60 @@ model Product {
   name            String
   slug            String
   description     String
-  basePrice       Decimal @map("base_price") @db.Decimal(8, 2)
-  imageUrl        String  @map("image_url")
-  discountPercent Int     @default(0) @map("discount_percent")
-  categoryId      String  @map("category_id")
+  basePrice       Decimal @db.Decimal(8, 2)
+  imageUrl        String
+  discountPercent Int     @default(0)
+  categoryId      String
 
   category Category @relation(fields: [categoryId], references: [id])
+}
+
+model Account {
+  id                 String    @id @default(cuid())
+  userId             String
+  providerType       String
+  providerId         String
+  providerAccountId  String
+  refreshToken       String?
+  accessToken        String?
+  accessTokenExpires DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  user               User      @relation(fields: [userId], references: [id])
+
+  @@unique([providerId, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  expires      DateTime
+  sessionToken String   @unique
+  accessToken  String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model VerificationRequest {
+  id         String   @id @default(cuid())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([identifier, token])
 }

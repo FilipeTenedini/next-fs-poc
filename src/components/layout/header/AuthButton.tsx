@@ -1,7 +1,7 @@
 "use client";
 
 import { LogInIcon } from "lucide-react";
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/Button";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const AuthButton = () => {

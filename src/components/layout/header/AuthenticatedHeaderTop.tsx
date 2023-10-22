@@ -1,8 +1,8 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
 import { useSession } from "next-auth/react";
-import { Separator } from "./ui/Separator";
+import { Separator } from "@/components/ui/Separator";
 
 const AuthenticatedHeaderTop = () => {
   const { status, data } = useSession();

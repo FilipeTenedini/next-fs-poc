@@ -1,9 +1,9 @@
 import { HomeIcon, ListOrderedIcon, MenuIcon, PercentIcon, ShoppingCartIcon } from "lucide-react";
-import { Button } from "./Button";
-import { Card } from "./Card";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./Sheet";
-import AuthButton from "../AuthButton";
-import AuthenticatedHeaderTop from "../AuthenticatedHeaderTop";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/Sheet";
+import AuthButton from "./AuthButton";
+import AuthenticatedHeaderTop from "./AuthenticatedHeaderTop";
 
 const Header = () => {
   return (

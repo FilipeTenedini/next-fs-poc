@@ -1,16 +1,11 @@
-"use client";
-
-import { HomeIcon, ListOrderedIcon, LogInIcon, MenuIcon, PercentIcon, ShoppingCartIcon } from "lucide-react";
+import { HomeIcon, ListOrderedIcon, MenuIcon, PercentIcon, ShoppingCartIcon } from "lucide-react";
 import { Button } from "./Button";
 import { Card } from "./Card";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./Sheet";
-import { signIn } from "next-auth/react";
+import AuthButton from "../AuthButton";
+import AuthenticatedHeaderTop from "../AuthenticatedHeaderTop";
 
 const Header = () => {
-  const handleLoginClick = async () => {
-    await signIn();
-  }
-
   return (
     <Card className="flex justify-between p-[1.875rem]">
       <Sheet>
@@ -25,11 +20,10 @@ const Header = () => {
             Menu
           </SheetHeader>
 
+          <AuthenticatedHeaderTop />
+
           <div className="mt-2 flex flex-col gap-2">
-            <Button onClick={handleLoginClick} variant="outline" className="w-full justify-start gap-2">
-              <LogInIcon size={16}/>
-              Fazer Login
-            </Button>
+            <AuthButton />
 
             <Button variant="outline" className="w-full justify-start gap-2">
               <HomeIcon size={16}/>
@@ -52,7 +46,7 @@ const Header = () => {
       <h1 className="text-lg font-semibold">
         <span className="text-primary">
           FSW store
-        </span>  
+        </span>
       </h1>
 
       <Button size="icon" variant="outline">
@@ -61,5 +55,5 @@ const Header = () => {
     </Card>
     );
 }
- 
+
 export default Header;

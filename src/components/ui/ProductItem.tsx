@@ -6,7 +6,7 @@ import { ArrowDown } from "lucide-react";
 interface ProductItemProps {
   product: ProductWithTotalPrice;
 }
-// 1:16:00 (CRIAÇÃO DA BADGE)
+
 const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <div className="flex max-w-[156px] flex-col gap-4">

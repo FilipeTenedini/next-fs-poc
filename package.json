@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:migrate-dev": "npx prisma migrate dev",
-    "db:rollback-dev": "npx prisma migrate reset"
+    "db:rollback-dev": "npx prisma migrate reset",
+    "prepare": "husky install"
   },
   "prisma": {
     "seed": "ts-node ./prisma/seed.ts"

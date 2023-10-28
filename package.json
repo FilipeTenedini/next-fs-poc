@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:migrate-dev": "npx prisma migrate dev",
+    "db:rollback-dev": "npx prisma migrate reset"
   },
   "prisma": {
     "seed": "ts-node ./prisma/seed.ts"

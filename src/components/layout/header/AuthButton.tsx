@@ -17,7 +17,11 @@ const AuthButton = () => {
   }
 
   return (
-    <Button onClick={status === "authenticated" ? handleLogoutClick : handleLoginClick} variant="outline" className="w-full justify-start gap-2">
+    <Button
+      onClick={status === "authenticated" ? handleLogoutClick : handleLoginClick}
+      variant="outline"
+      className="w-full justify-start gap-2"
+    >
       <LogInIcon size={16}/>
       Fazer {status === "authenticated"  ? "Logout" : "Login"}
     </Button>

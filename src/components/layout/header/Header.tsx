@@ -1,9 +1,10 @@
 import { HomeIcon, ListOrderedIcon, MenuIcon, PercentIcon, ShoppingCartIcon } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/Sheet";
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/Sheet";
 import AuthButton from "./AuthButton";
 import AuthenticatedHeaderTop from "./AuthenticatedHeaderTop";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -35,10 +36,14 @@ const Header = () => {
               Ofertas
             </Button>
 
-            <Button variant="outline" className="w-full justify-start gap-2">
-              <ListOrderedIcon size={16}/>
-              Catálogo
-            </Button>
+            <SheetClose asChild>
+              <Link href={"/catalog"}>
+                <Button variant="outline" className="w-full justify-start gap-2">
+                    <ListOrderedIcon size={16}/>
+                    Catálogo
+                </Button>
+              </Link>
+            </SheetClose>
           </div>
         </SheetContent>
       </Sheet>

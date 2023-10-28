@@ -1,0 +1,37 @@
+import { prismaClient } from "@/lib/prisma";
+import { ShapesIcon } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
+import ProductItem from "@/components/ui/ProductItem";
+import { computeProductTotalPrice } from "@/helpers/computeProductTotalPrice";
+import { CATEGORY_ICON } from "@/constants/categoryIcon";
+
+
+const CategoryProducts = async ({ params }: any) => {
+  const category = await prismaClient.category.findFirst({
+    where: {
+      slug: params.slug,
+    },
+    include: {
+      Product: true
+    },
+  });
+
+  if (!category) return null;
+
+  return (
+    <div className="flex flex-col gap-8 p-5">
+      <Badge className="w-fit gap-1 border border-primary px-3 py-1 text-base uppercase" variant="outline">
+        {CATEGORY_ICON[params.slug as keyof typeof CATEGORY_ICON]}
+        {category.name}
+      </Badge>
+
+      <div className="grid grid-cols-2 gap-8">
+        {category.Product.map((product) => (
+          <ProductItem key={product.id} product={computeProductTotalPrice(product)}/>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default CategoryProducts;

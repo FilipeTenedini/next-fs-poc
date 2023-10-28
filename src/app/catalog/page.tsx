@@ -18,7 +18,7 @@ const CatalogPage = async () => {
           <CatalogItem key={category.id} category={category} />
         ))}
       </div>
-      <div>fpijdspafjsdi</div>
+      <div>fpijdspafjsdihaha</div>
     </div>
   );
 }

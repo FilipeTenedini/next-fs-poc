@@ -12,7 +12,7 @@ const CategoryProducts = async ({ params }: any) => {
       slug: params.slug,
     },
     include: {
-      Product: true
+      products: true
     },
   });
 
@@ -26,7 +26,7 @@ const CategoryProducts = async ({ params }: any) => {
       </Badge>
 
       <div className="grid grid-cols-2 gap-8">
-        {category.Product.map((product) => (
+        {category.products.map((product) => (
           <ProductItem key={product.id} product={computeProductTotalPrice(product)}/>
         ))}
       </div>

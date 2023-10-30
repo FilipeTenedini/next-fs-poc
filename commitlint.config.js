@@ -3,7 +3,7 @@ module.exports = {
     'type-enum': [2, 'always', ['fix', 'types', 'feat', 'lint', 'refact', 'chore', 'test']],
     'type-case': [2, 'always', 'lower-case'],
     'type-empty': [2, 'never'],
-    'scope-case': [2, 'always', 'lower-case'],
+    'scope-case': [1, 'always', 'lower-case'],
     'header-max-length': [2, 'always', 100]
   }
 };

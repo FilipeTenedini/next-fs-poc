@@ -5,8 +5,13 @@ import ProductItem from "@/components/ui/ProductItem";
 import { computeProductTotalPrice } from "@/helpers/computeProductTotalPrice";
 import { CATEGORY_ICON } from "@/constants/categoryIcon";
 
+interface CategoryProducts {
+  params: {
+    slug: string;
+  }
+}
 
-const CategoryProducts = async ({ params }: any) => {
+const CategoryProducts = async ({ params }: CategoryProducts) => {
   const category = await prismaClient.category.findFirst({
     where: {
       slug: params.slug,

@@ -1,11 +1,9 @@
 #!/bin/bash
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-REGEX="^(main|feature|bugfix|release|hotfix)($|\/[a-z0-9]+(-[a-z0-9]+)*)$"
+REGEX="^(main|master|(feature|bug-fix|hot-fix|refactor|types|lint|chore)(\/[a-z0-9]+(-[a-z0-9]+)*))$"
 
 if ! [[ $BRANCH =~ $REGEX ]]; then
   echo "Seu commit foi rejeitado pois não segue os padrões definidos pela equipe."
-  echo "Por favor, altere o nome da sua branch de acordo com o padrão '(feature|bugfix|release|hotfix)/algumacoisa'."
+  echo "Por favor, altere o nome da sua branch de acordo com o padrão '(master|main) | (feature|bug-fix|hot-fix|refactor|types|lint|chore)/algumacoisa'."
   exit 1
 fi
-
-# npx commitlint --edit "$1"

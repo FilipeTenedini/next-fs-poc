@@ -1,5 +1,9 @@
 #!/bin/bash
+REGEX="^(fix|types|feat|lint|refact|chore|test)(\([a-zA-Z-]*\))?: .+"
+COMMIT_MESSAGE=$(cat .git/COMMIT_EDITMSG)
 
-. "$(dirname -- "$0")/_/husky.sh"
-
-npx commitlint --edit $1
+if ! [[ $COMMIT_MESSAGE =~ $REGEX ]]; then
+  echo "Seu commit foi rejeitado pois não segue os padrões definidos pela equipe."
+  echo "Por favor, altere a mensagem de commit para fix|types|feat|lint|refact|chore|test(este escopo é opcional): alguma coisa"
+  exit 1
+fi

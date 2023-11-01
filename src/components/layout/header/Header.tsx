@@ -5,7 +5,8 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from "@/co
 import AuthButton from "./AuthButton";
 import AuthenticatedHeaderTop from "./AuthenticatedHeaderTop";
 import Link from "next/link";
-// 1;50
+import Cart from "@/components/ui/Cart";
+
 const Header = () => {
   return (
     <Card className="flex justify-between p-[1.875rem]">
@@ -50,13 +51,21 @@ const Header = () => {
 
       <Link href="/">
         <h1 className="text-lg font-semibold">
-          <span className="text-primary">FSW</span> Store
+          <span className="text-primary">FT</span>Tech
         </h1>
       </Link>
 
-      <Button size="icon" variant="outline">
-          <ShoppingCartIcon />
-      </Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button size="icon" variant="outline">
+              <ShoppingCartIcon />
+          </Button>
+        </SheetTrigger>
+
+        <SheetContent>
+          <Cart />
+        </SheetContent>
+      </Sheet>
     </Card>
     );
 }
